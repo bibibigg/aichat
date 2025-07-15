@@ -63,13 +63,13 @@ INDEX idx_room_created (room_id, created_at)
 ## 기능
 
 - 로그인: 이름 입력으로 로그인, 서버에 해당 이름이 없을 시 해당이름으로 회원가입되어 로그인
-  <img src="https://raw.githubusercontent.com/bibibigg/aichat/docs/login.png" alt="로그인"/>
+  <img src="https://raw.githubusercontent.com/bibibigg/aichat/blob/main/docs/login.png" alt="로그인"/>
 
 - 채팅방 선택 및 개설 : 로그인 후 개설되어 있는 채팅방을 선택하거나 채팅방 이름을 입력한 뒤 생성 버튼을 누를 시 채팅방이 개설
-  <img src="https://raw.githubusercontent.com/bibibigg/aichat/docs/chatroom.png" alt="채팅방 선택 및 개설"/>
+  <img src="https://raw.githubusercontent.com/bibibigg/aichat/blob/main/docs/chatroom.png" alt="채팅방 선택 및 개설"/>
 
 - 채팅 : 원하는 채팅방에 입장하면 소켓통신으로 실시간 채팅 가능, 모든 채팅방에는 ai유저가 들어가있어서 혼자있어도 채팅가능
-  <img src="https://raw.githubusercontent.com/bibibigg/aichat/docs/chat.png" alt="채팅"/>
+  <img src="https://raw.githubusercontent.com/bibibigg/aichat/blob/main/docs/chat.png" alt="채팅"/>
   민수 라는 계정을 AI유저로 사용하고 있습니다.
 
 ##사용방법
