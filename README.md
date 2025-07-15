@@ -69,7 +69,7 @@ INDEX idx_room_created (room_id, created_at)
   <img src="https://raw.githubusercontent.com/bibibigg/aichat/blob/main/docs/chatroom.png" alt="채팅방 선택 및 개설"/>
 
 - 채팅 : 원하는 채팅방에 입장하면 소켓통신으로 실시간 채팅 가능, 모든 채팅방에는 ai유저가 들어가있어서 혼자있어도 채팅가능
-  <img src="https://raw.githubusercontent.com/bibibigg/aichat/blob/main/docs/chat.png" alt="채팅"/>
+  <img src="https://raw.githubusercontent.com/bibibigg/aichat/main/docs/chat.png" alt="채팅"/>
   민수 라는 계정을 AI유저로 사용하고 있습니다.
 
 ##사용방법
