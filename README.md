@@ -33,6 +33,7 @@
 
 ### DB구조
 
+```bash
 CREATE TABLE users (
 id INT PRIMARY KEY AUTO_INCREMENT,
 username VARCHAR(50) UNIQUE NOT NULL,
@@ -57,6 +58,7 @@ FOREIGN KEY (room_id) REFERENCES chat_rooms(id) ON DELETE CASCADE,
 FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
 INDEX idx_room_created (room_id, created_at)
 );
+```
 
 ## 기능
 
@@ -87,20 +89,24 @@ GEMINI_API_KEY=google AI Studio에서 발급받은 키
 
 2. 각 폴더(backend, frontend)에서 의존성 설치
 
-   ```bash
-   cd backend
-   npm install
+```bash
+cd backend
+npm install
 
-   cd ../frontend
-   npm install
-   ```
+cd ../frontend
+npm install
+```
 
 3. 서버 및 클라이언트 실행
-   - 백엔드:
-     ```bash
-     npm run dev
-     ```
-   - 프론트엔드:
-     ```bash
-     npm run dev
-     ```
+
+- 백엔드:
+
+```bash
+npm run dev
+```
+
+- 프론트엔드:
+
+```bash
+ npm run dev
+```
