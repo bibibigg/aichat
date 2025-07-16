@@ -72,7 +72,7 @@ async function getGeminiReply(userMessage) {
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
       contents: prompt,
-      // config: { thinkingConfig: { thinkingBudget: 0 } } // 필요시 사고 비활성화
+      config: { thinkingConfig: { thinkingBudget: 0 } }, // 사고 비활성화
     });
     return response.text.trim();
   } catch (err) {
