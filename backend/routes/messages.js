@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
   const { roomId } = req.params;
   try {
     const [rows] = await pool.query(
-      `SELECT m.id, m.content, m.created_at, u.username
+      `SELECT m.id, m.user_id, m.content, m.created_at, u.username
        FROM messages m
        JOIN users u ON m.user_id = u.id
        WHERE m.room_id = ?

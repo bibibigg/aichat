@@ -6,6 +6,7 @@ interface Message {
   content: string;
   created_at: string;
   username: string;
+  user_id: number;
 }
 
 interface User {
@@ -110,17 +111,27 @@ const ChatRoom: React.FC<ChatRoomProps> = ({
           aria-live="polite"
         >
           <ul className="space-y-2">
-            {messages.map((msg) => (
-              <li key={msg.id} className="flex flex-col">
-                <span className="font-semibold text-indigo-800">
-                  {msg.username}
-                </span>
-                <span className="text-gray-800 break-words">{msg.content}</span>
-                <span className="text-xs text-gray-400 self-end">
-                  {msg.created_at}
-                </span>
-              </li>
-            ))}
+            {messages.map((msg) => {
+              const isMine = msg.user_id === user.id;
+              return (
+                <li
+                  key={msg.id}
+                  className={`flex flex-col rounded-lg p-2 ${
+                    isMine ? "bg-white" : "bg-blue-100"
+                  }`}
+                >
+                  <span className="font-semibold text-indigo-800">
+                    {msg.username}
+                  </span>
+                  <span className="text-gray-800 break-words">
+                    {msg.content}
+                  </span>
+                  <span className="text-xs text-gray-400 self-end">
+                    {msg.created_at}
+                  </span>
+                </li>
+              );
+            })}
           </ul>
           <div ref={messagesEndRef} />
         </div>

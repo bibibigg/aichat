@@ -4,7 +4,7 @@ interface LoginProps {
   onLogin: (user: { id: number; username: string }) => void;
 }
 
-const API_BASE = "http://localhost:4000";
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [username, setUsername] = useState("");
@@ -28,6 +28,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       if (!res.ok) throw new Error("로그인 실패");
       const user = await res.json();
       onLogin(user);
+      localStorage.setItem("user", JSON.stringify(user.id)); // 임시로 로그인 정보 로컬스토리지에 저장
     } catch (err: any) {
       setError(err.message);
     } finally {
