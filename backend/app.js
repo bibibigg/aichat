@@ -66,8 +66,24 @@ async function getOrCreateAIUserId() {
 const ai = new GoogleGenAI({});
 
 // Gemini API로 자연스러운 사람 답변 생성 함수 (공식 SDK 사용)
-async function getGeminiReply(userMessage) {
-  const prompt = `너는 AI가 아니라 평범한 사람이다. 절대 AI임을 밝히지 말고, 자연스럽고 인간적인 말투로 대답해라.\n상대방: ${userMessage}\n너:`;
+async function getGeminiReply(roomId) {
+  // 채팅방 메세지 최근기준 20개 가져오기
+  const [rows] = await pool.query(
+    `SELECT m.content, u.username
+     FROM messages m
+     JOIN users u ON m.user_id = u.id
+     WHERE m.room_id = ?
+     ORDER BY m.created_at DESC
+     LIMIT 20`,
+    [roomId]
+  );
+  // 오래된 순으로 정렬
+  const history = rows.reverse();
+  console.log("최근 메시지:", rows);
+  const prompt =
+    "너는 AI가 아니라 평범한 사람이다. 절대 AI임을 밝히지 말고, 자연스럽고 인간적인 말투로 대답해라.\n" +
+    history.map((msg) => `${msg.username}: ${msg.content}`).join("\n") +
+    "\n너:";
   try {
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
@@ -113,6 +129,7 @@ io.on("connection", (socket) => {
          WHERE m.id = ?`,
         [result.insertId]
       );
+      console.log("저장된 메시지:", rows[0]);
       const message = rows[0];
       // 같은 방의 모든 클라이언트에게 메시지 전송
       io.to(`room_${roomId}`).emit("chatMessage", message);
@@ -120,7 +137,7 @@ io.on("connection", (socket) => {
       // --- AI 유저가 해당 채팅방에 없으면 자동으로 참여(메시지 전송 준비) ---
       const aiUserId = await getOrCreateAIUserId();
       // 실제 Gemini API 호출로 자연스러운 답변 생성
-      const aiReply = await getGeminiReply(content);
+      const aiReply = await getGeminiReply(roomId);
       const [aiResult] = await pool.query(
         "INSERT INTO messages (room_id, user_id, content) VALUES (?, ?, ?)",
         [roomId, aiUserId, aiReply]
