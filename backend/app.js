@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-require("dotenv").config();
+// require("dotenv").config();
 const http = require("http");
 const { Server } = require("socket.io");
 const supabase = require("./db"); // 이제 supabase 클라이언트
