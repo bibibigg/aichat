@@ -95,7 +95,7 @@ async function getOrCreateAIUserId() {
   }
 }
 
-const ai = new GoogleGenAI({});
+const ai = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
 
 // Gemini API로 자연스러운 사람 답변 생성 함수 (공식 SDK 사용)
 async function getGeminiReply(roomId) {
