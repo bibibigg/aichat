@@ -11,7 +11,7 @@
 - Node.js
 - Express
 - Socket.IO (실시간 통신)
-- supabase
+- supabase.js
 - dotenv (환경 변수 관리)
 - CORS (교차 출처 리소스 공유)
 - nodemon (개발용 자동 재시작, devDependency)
