@@ -2,6 +2,8 @@
 
 ## cursor를 적극 이용한 채팅 기능 구현 토이프로젝트
 
+## 주소:https://aichat-wine-gamma.vercel.app/
+
 - 목적 : ai툴을 활용하여 단기간에 기능 구현 및 gemini api를 활용한 채팅 기능 구현
 
 ## 기술 스택
@@ -30,6 +32,11 @@
 ### DB
 
 25.08.25 mysql에서 supabase로 전환
+
+### 배포
+
+- 백엔드: railway
+- 프론트엔드: vercel
 
 ## 기능
 
